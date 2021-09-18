@@ -27,7 +27,6 @@ RUN python -m pip install --upgrade gunicorn
 # install source code and dependencies
 WORKDIR /app_backend
 COPY . /app_backend
-COPY ../requirements.txt /app_backend
 RUN pip install -r requirements.txt
 RUN python manage.py collectstatic --clear --noinput
 

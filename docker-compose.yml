@@ -1,0 +1,13 @@
+version: "3.9"
+
+services:
+  backend:
+    container_name: template_app_backend
+    restart: always
+    command: gunicorn app_backend.wsgi:application --workers 3 --bind 0.0.0.0:8000 --reload --capture-output --enable-stdio-inheritance --timeout 120 --log-level debug
+    volumes:
+      - ./atena_backend:/atena_backend
+    env_file:
+      - .env
+    ports:
+      - "8000:8000"
